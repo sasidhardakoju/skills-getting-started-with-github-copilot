@@ -25,7 +25,14 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="participants-section">
               <h5>Current Participants:</h5>
               <ul>
-                ${details.participants.map(email => `<li>${email}</li>`).join('')}
+                ${details.participants.map(email => `
+                  <li style="display: flex; align-items: center;">
+                    <span>${email}</span>
+                    <button class="delete-participant-btn" title="Remove participant" data-email="${email}" data-activity="${name}" style="background: none; border: none; color: #c62828; margin-left: 8px; cursor: pointer; font-size: 1.1em;">
+                      &#128465;
+                    </button>
+                  </li>
+                `).join('')}
               </ul>
             </div>
           `
@@ -74,6 +81,8 @@ document.addEventListener("DOMContentLoaded", () => {
         messageDiv.textContent = result.message;
         messageDiv.className = "success";
         signupForm.reset();
+        // Refresh activities list to show new participant
+        fetchActivities();
       } else {
         messageDiv.textContent = result.detail || "An error occurred";
         messageDiv.className = "error";

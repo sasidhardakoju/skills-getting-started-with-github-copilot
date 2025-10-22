@@ -156,8 +156,8 @@ footer {
 }
 
 .participants-section ul {
-  list-style-position: inside;
-  padding-left: 10px;
+  list-style: none;
+  padding-left: 0;
 }
 
 .participants-section li {
